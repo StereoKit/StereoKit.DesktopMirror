@@ -72,12 +72,12 @@ namespace StereoKit.DesktopMirror
 			Pose p = World.HasBounds
 				? World.BoundsPose.ToMatrix().Inverse.Transform(Pose)
 				: Pose;
-			Platform.WriteFile("DesktopDuplicator.ini", $"{enabled} {p.position.x} {p.position.y} {p.position.z} {p.orientation.x} {p.orientation.y} {p.orientation.z} {p.orientation.w}");
+			Platform.WriteFile("DesktopMirror.ini", $"{enabled} {p.position.x} {p.position.y} {p.position.z} {p.orientation.x} {p.orientation.y} {p.orientation.z} {p.orientation.w}");
 		}
 
 		void LoadSettings()
 		{
-			string[] at = Platform.ReadFileText("DesktopDuplicator.ini")?.Split(' ');
+			string[] at = Platform.ReadFileText("DesktopMirror.ini")?.Split(' ');
 			if (at != null && at.Length == 8)
 			{
 				enabled = bool.Parse(at[0]);
