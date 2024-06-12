@@ -11,6 +11,7 @@
 		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
 		<PackageTags>StereoKit;Mirroring;Virtual;Desktop</PackageTags>
 		<PackageIcon>images\StereoKitLogo64.png</PackageIcon>
+		<PackageReadmeFile>readme.md</PackageReadmeFile>
 		<EmbedUntrackedSources>true</EmbedUntrackedSources>
 		<Title>StereoKit.DesktopMirror</Title>
 		<Version>0.1.0</Version>
@@ -21,7 +22,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="StereoKit" Version="[0.3.9,)" />
+		<PackageReference Include="StereoKit" Version="[0.3.10-preview.1,)" />
 		<PackageReference Include="Vortice.Direct3D11" Version="[2.1.2,)" />
 		<PackageReference Include="Vortice.DXGI" Version="[2.1.2,)" />
 		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
@@ -29,6 +30,7 @@
 
 	<ItemGroup>
 		<None Include="images\StereoKitLogo64.png" Pack="true" PackagePath="images\" />
+		<None Include="..\readme.md" Pack="true" PackagePath="\" />
 
 		<None Remove="DesktopBlit.hlsl"/>
 	</ItemGroup>
