@@ -1,17 +1,35 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <OutputType>Library</OutputType>
-    <TargetFramework>netstandard2.0</TargetFramework>
-  </PropertyGroup>
+	<PropertyGroup>
+		<OutputType>Library</OutputType>
+		<TargetFramework>netstandard2.0</TargetFramework>
 
-  <ItemGroup>
-    <PackageReference Include="StereoKit" Version="[0.3.9,)" />
-    <PackageReference Include="Vortice.Direct3D11" Version="[2.1.2,)" />
-    <PackageReference Include="Vortice.DXGI" Version="[2.1.2,)" />
-  </ItemGroup>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<Authors>StereoKit</Authors>
+		<RepositoryUrl>https://github.com/StereoKit/StereoKit.DesktopMirror</RepositoryUrl>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+		<PackageTags>StereoKit;Mirroring;Virtual;Desktop</PackageTags>
+		<PackageIcon>images\StereoKitLogo64.png</PackageIcon>
+		<EmbedUntrackedSources>true</EmbedUntrackedSources>
+		<Title>StereoKit.DesktopMirror</Title>
+		<Version>0.1.0</Version>
+		<Description>A small library for duplicating your desktop window within a StereoKit application on Windows.</Description>
+		<Summary>A small library for duplicating your desktop window within a StereoKit application on Windows.</Summary>
+		<Deterministic>true</Deterministic>
+		<ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <SKShader Include="Assets/DesktopMirror/DesktopBlit.hlsl" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="StereoKit" Version="[0.3.9,)" />
+		<PackageReference Include="Vortice.Direct3D11" Version="[2.1.2,)" />
+		<PackageReference Include="Vortice.DXGI" Version="[2.1.2,)" />
+		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Include="images\StereoKitLogo64.png" Pack="true" PackagePath="images\" />
+
+		<None Remove="DesktopBlit.hlsl"/>
+	</ItemGroup>
 </Project>

@@ -6,52 +6,52 @@ using System.Runtime.InteropServices;
 
 namespace StereoKit.DesktopMirror
 {
-    public class DesktopMaterial {
-        IDXGIOutputDuplication duplication    = null;
+	public class DesktopMaterial {
+		IDXGIOutputDuplication duplication    = null;
 		Tex                    duplicationTex = null;
 		Tex                    pointerTex     = null;
 		Vec2                   pointerPos;
 
-        Material blitMat         = null;
+		MaterialDesktopBlit blitMat = null;
 		Tex      desktopTex      = null;
 		Material desktopMaterial = null;
 
-        public Material Material => desktopMaterial;
+		public Material Material => desktopMaterial;
 		public int Width => desktopTex.Width;
 		public int Height => desktopTex.Height;
 		public float Aspect => desktopTex.Width / (float)desktopTex.Height;
 
-        public DesktopMaterial() {
-            desktopTex     = new Tex(TexType.Rendertarget);
+		public DesktopMaterial() {
+			desktopTex     = new Tex(TexType.Rendertarget);
 			duplicationTex = new Tex();
 			desktopTex    .AddressMode = TexAddress.Clamp;
 			duplicationTex.AddressMode = TexAddress.Clamp;
 
-            desktopMaterial = Material.Unlit.Copy();
+			desktopMaterial = Material.Unlit.Copy();
 			desktopMaterial.FaceCull = Cull.None;
 			desktopMaterial[MatParamName.DiffuseTex] = desktopTex;
 
-			blitMat = new Material(Shader.FromFile("DesktopMirror/DesktopBlit.hlsl"));
-			blitMat["source"] = duplicationTex;
-        }
+			blitMat = new MaterialDesktopBlit();
+			blitMat.source = duplicationTex;
+		}
 
-        public void Start() {
-            ID3D11Device d3dDevice = new ID3D11Device(Backend.D3D11.D3DDevice);
+		public void Start() {
+			ID3D11Device d3dDevice = new ID3D11Device(Backend.D3D11.D3DDevice);
 			IDXGIDevice  device    = d3dDevice.QueryInterface<IDXGIDevice>();
 			IDXGIAdapter adapter   = device.GetParent<IDXGIAdapter>();
 
 			Result hr = adapter.EnumOutputs(0, out IDXGIOutput output);
 			IDXGIOutput1 output1 = output.QueryInterface<IDXGIOutput1>();
 			duplication = output1.DuplicateOutput(d3dDevice);
-        }
+		}
 
-        public void Stop() {
-            duplication?.ReleaseFrame();
+		public void Stop() {
+			duplication?.ReleaseFrame();
 			duplication = null;
-        }
+		}
 
-        public void Step() {
-            if (duplication == null) return;
+		public void Step() {
+			if (duplication == null) return;
 
 			// Update our desktop texture
 			if (DuplicationNextFrame(duplication, duplicationTex, ref pointerPos, ref pointerTex)) {
@@ -60,17 +60,17 @@ namespace StereoKit.DesktopMirror
 					desktopTex.SetSize(duplicationTex.Width, duplicationTex.Height);
 				}
 
-				blitMat["cursor_pos"] = pointerPos;
+				blitMat.cursor_pos = pointerPos;
 				if (pointerTex != null)
 				{
-					blitMat["cursor_size"] = new Vec2(pointerTex.Width / (float)desktopTex.Width, pointerTex.Height / (float)desktopTex.Height);
-					blitMat["cursor"     ] = pointerTex;
+					blitMat.cursor_size = new Vec2(pointerTex.Width / (float)desktopTex.Width, pointerTex.Height / (float)desktopTex.Height);
+					blitMat.cursor      = pointerTex;
 				}
 				Renderer.Blit(desktopTex, blitMat);
 			}
-        }
+		}
 
-        IntPtr pointerMem;
+		IntPtr pointerMem;
 		int    pointerMemSize = 0;
 		byte[] pointerBytes;
 		bool DuplicationNextFrame(IDXGIOutputDuplication duplication, Tex frameTex, ref Vec2 pointerAt, ref Tex pointerTex)
@@ -157,5 +157,5 @@ namespace StereoKit.DesktopMirror
 
 			return true;
 		}
-    }
+	}
 }
