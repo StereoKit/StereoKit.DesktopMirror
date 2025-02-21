@@ -4,25 +4,41 @@
 // total  : 6
 // texture: 0
 // flow   : 0
-// --Pixel shader ops-- 
+// --Pixel shader ops--
 // total  : 14
 // texture: 2
 // flow   : 0
 
 using StereoKit;
 
+/// <summary> An auto-generated class wrapping the 'DesktopBlit' Shader as a Material
+/// with discoverable type-safe bindings. This also bakes the shader data into
+/// the application binary instead of as an asset file. </summary>
 class MaterialDesktopBlit : Material
 {
-	public MaterialDesktopBlit() : base(DesktopBlitShader) {}
+	/// <summary> Constructs a new instance of a Material based on the Shader
+	/// compiled from DesktopBlit.hlsl. </summary>
+	public MaterialDesktopBlit() : base(SourceShader) {}
 
-	public Tex source { get { return GetTexture("source"); } set { SetTexture("source", value); } }
-	public Tex cursor { get { return GetTexture("cursor"); } set { SetTexture("cursor", value); } }
-	public Vec2 cursor_pos { get { return GetVector2("cursor_pos"); } set { SetVector("cursor_pos", value); } }
-	public Vec2 cursor_size { get { return GetVector2("cursor_size"); } set { SetVector("cursor_size", value); } }
+	/// <summary>This auto-generated property updates or retrieves the
+	/// Material's Shader texture named 'source'.</summary>
+	public Tex Source { get { return GetTexture("source"); } set { SetTexture("source", value); } }
+	/// <summary>This auto-generated property updates or retrieves the
+	/// Material's Shader texture named 'cursor'.</summary>
+	public Tex Cursor { get { return GetTexture("cursor"); } set { SetTexture("cursor", value); } }
+	/// <summary>This auto-generated property updates or retrieves the
+	/// Material's Shader property named 'cursor_pos'.</summary>
+	public Vec2 CursorPos { get { return GetVector2("cursor_pos"); } set { SetVector("cursor_pos", value); } }
+	/// <summary>This auto-generated property updates or retrieves the
+	/// Material's Shader property named 'cursor_size'.</summary>
+	public Vec2 CursorSize { get { return GetVector2("cursor_size"); } set { SetVector("cursor_size", value); } }
 
-	public  static Shader DesktopBlitShader { get { if (shader == null) shader = Shader.FromMemory(shaderData); return shader; } }
-	private static Shader shader     = null;
-	private static byte[] shaderData = {
+	/// <summary> Lazy initialized Shader for this Material. This is created
+	/// from compiled shader binary data baked into this Material's .cs file.
+	/// </summary>
+	public  static Shader  SourceShader { get { if (shader == null) shader = Shader.FromMemory(shaderData); return shader; } }
+	private static Shader  shader     = null;
+	private static byte[]  shaderData = {
 83,75,83,72,65,68,69,82,3,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,

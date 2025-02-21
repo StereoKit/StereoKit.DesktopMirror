@@ -1,6 +1,6 @@
 ﻿using StereoKit;
 using StereoKit.DesktopMirror;
 
-SK.Initialize(new SKSettings{assetsFolder="Assets"});
+SK.Initialize();
 SK.AddStepper<DesktopMirror>();
 SK.Run();

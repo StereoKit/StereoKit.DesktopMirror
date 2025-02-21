@@ -32,7 +32,7 @@ namespace StereoKit.DesktopMirror
 			desktopMaterial[MatParamName.DiffuseTex] = desktopTex;
 
 			blitMat = new MaterialDesktopBlit();
-			blitMat.source = duplicationTex;
+			blitMat.Source = duplicationTex;
 		}
 
 		public void Start() {
@@ -60,11 +60,11 @@ namespace StereoKit.DesktopMirror
 					desktopTex.SetSize(duplicationTex.Width, duplicationTex.Height);
 				}
 
-				blitMat.cursor_pos = pointerPos;
+				blitMat.CursorPos = pointerPos;
 				if (pointerTex != null)
 				{
-					blitMat.cursor_size = new Vec2(pointerTex.Width / (float)desktopTex.Width, pointerTex.Height / (float)desktopTex.Height);
-					blitMat.cursor      = pointerTex;
+					blitMat.CursorSize = new Vec2(pointerTex.Width / (float)desktopTex.Width, pointerTex.Height / (float)desktopTex.Height);
+					blitMat.Cursor     = pointerTex;
 				}
 				Renderer.Blit(desktopTex, blitMat);
 			}

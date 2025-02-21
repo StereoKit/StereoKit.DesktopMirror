@@ -1,7 +1,7 @@
 ﻿using StereoKit;
 using StereoKit.DesktopMirror;
 
-SK.Initialize(new SKSettings{assetsFolder="Assets"});
+SK.Initialize();
 
 DesktopMaterial desktop = new DesktopMaterial();
 desktop.Start();

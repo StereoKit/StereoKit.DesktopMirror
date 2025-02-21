@@ -14,15 +14,17 @@
 		<PackageReadmeFile>readme.md</PackageReadmeFile>
 		<EmbedUntrackedSources>true</EmbedUntrackedSources>
 		<Title>StereoKit.DesktopMirror</Title>
-		<Version>0.1.0</Version>
+		<Version>0.1.1</Version>
 		<Description>A small library for duplicating your desktop window within a StereoKit application on Windows.</Description>
 		<Summary>A small library for duplicating your desktop window within a StereoKit application on Windows.</Summary>
 		<Deterministic>true</Deterministic>
 		<ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+
+		<SKBuildShaderCode>false</SKBuildShaderCode>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="StereoKit" Version="[0.3.10-preview.1,)" />
+		<PackageReference Include="StereoKit" Version="[0.3.10,)" />
 		<PackageReference Include="Vortice.Direct3D11" Version="[2.1.2,)" />
 		<PackageReference Include="Vortice.DXGI" Version="[2.1.2,)" />
 		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />

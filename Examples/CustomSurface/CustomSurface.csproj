@@ -2,12 +2,12 @@
 
 	<PropertyGroup>
 		<OutputType>Exe</OutputType>
-		<TargetFramework>net7.0</TargetFramework>
+		<TargetFramework>net9.0</TargetFramework>
 		<ApplicationIcon>App.ico</ApplicationIcon>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="StereoKit" Version="0.3.10-preview.1" />
+		<PackageReference Include="StereoKit" Version="0.3.10" />
 
 		<!-- <PackageReference Include="StereoKit.DesktopMirror" Version="0.1" /> -->
 		<ProjectReference Include="..\..\StereoKit.DesktopMirror\StereoKit.DesktopMirror.csproj" />
