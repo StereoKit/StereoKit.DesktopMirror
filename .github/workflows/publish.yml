@@ -6,9 +6,6 @@ on:
 jobs:
   build:
 
-    env:
-      PROJECT: StereoKit.DesktopMirror\StereoKit.DesktopMirror.csproj
-
     runs-on: windows-latest
 
     steps:
@@ -18,10 +15,10 @@ jobs:
       with:
         dotnet-version: 9.0.x
     - name: Restore dependencies
-      run: dotnet restore $PROJECT
+      run: dotnet restore StereoKit.DesktopMirror\StereoKit.DesktopMirror.csproj
     - name: Build
-      run: dotnet build --configuration Release --no-restore $PROJECT
+      run: dotnet build --configuration Release --no-restore StereoKit.DesktopMirror\StereoKit.DesktopMirror.csproj
     - name: Test
-      run: dotnet test --no-build --verbosity normal $PROJECT
+      run: dotnet test --no-build --verbosity normal StereoKit.DesktopMirror\StereoKit.DesktopMirror.csproj
     - name: Publish
       run: nuget push **\*.nupkg -Source 'https://api.nuget.org/v3/index.json' -ApiKey ${{secrets.NUGET_API_KEY}}
